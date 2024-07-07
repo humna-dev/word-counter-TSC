@@ -1,20 +1,33 @@
-#! /usr/bin/env node
+#!/usr/bin/env node
 
-
-import inquirer  from "inquirer";
 import chalk from "chalk";
+import inquirer from "inquirer";
 
-const systemGenerateNo  = Math.floor(Math.random() * 10) + 1;
+console.log(chalk.bgGreen.bold.italic.underline("\n\t Greetings! Welcome to HUMNA_ALLAUDDIN's Amazing Word Counter!\n\t"));
 
-const {userGuess} : {userGuess:number} = await inquirer.prompt({
-    type : "number", 
-    name : "userGuess",
-    message :chalk.bgRed( "Guess the number between 1 to 10:"),
-});
+let quation = await inquirer.prompt([{
+    type: "confirm",
+    name: "yes$no",
+    message: "Do you want to count the length of your sentence?",
+    default: true
+}]);
 
-if(userGuess === systemGenerateNo){
-    console.log(chalk.green("Congratulations your guess is right."));
+if (quation.yes$no == true) {
+    console.log(chalk.bgBlue.bold("\n\t Sure, let's do it!\n\t"));
 
-}else{
-    console.log(chalk.red(`Opps the correct number was ${systemGenerateNo}. Better Luck Next Time. `));
+    let user_ans = await inquirer.prompt([{
+        type: "input",
+        name: "words",
+        message: "Please enter your sentence:"
+    }]);
+
+    console.log("\n\t", chalk.bgCyan.bold(user_ans.words) + "\n\t");
+
+    if (user_ans.words.trim() !== "") {
+        let answer = user_ans.words.trim().split(" ");
+        console.log(answer);
+        console.log(chalk.bgMagenta.bold(`\n\t Your sentence contains ${answer.length} words.\n\t`));
+    }
+} else {
+    console.log(chalk.bgRed.bold("\n\t OK, Goodbye!\n\t"));
 }

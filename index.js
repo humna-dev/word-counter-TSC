@@ -1,29 +1,27 @@
-#! /usr/bin/env node
-import inquirer from "inquirer";
+#!/usr/bin/env node
 import chalk from "chalk";
-const answer = await inquirer.prompt([
-    { message: chalk.yellow("Enter first number"), type: "number", name: "firstNumber" },
-    { message: chalk.yellow("Enter second number"), type: "number", name: "secondNumber" },
-    {
-        message: chalk.bgRed("Select one of the operator to perform operation"),
-        type: "list",
-        name: "operator",
-        choices: ["Addition", "Subtraction", "Multiplication", "Division"],
-    },
-]);
-//conditional statement
-if (answer.operator === "Addition") {
-    console.log(chalk.green(answer.firstNumber + answer.secondNumber));
-}
-else if (answer.operator === "Subtraction") {
-    console.log(chalk.green(answer.firstNumber - answer.secondNumber));
-}
-else if (answer.operator === "Multiplication") {
-    console.log(chalk.green(answer.firstNumber * answer.secondNumber));
-}
-else if (answer.operator === "Division") {
-    console.log(chalk.green(answer.firstNumber / answer.secondNumber));
+import inquirer from "inquirer";
+console.log(chalk.bgGreen.bold.italic.underline("\n\t Greetings! Welcome to HUMNA_ALLAUDDIN's Amazing Word Counter!\n\t"));
+let quation = await inquirer.prompt([{
+        type: "confirm",
+        name: "yes$no",
+        message: "Do you want to count the length of your sentence?",
+        default: true
+    }]);
+if (quation.yes$no == true) {
+    console.log(chalk.bgBlue.bold("\n\t Sure, let's do it!\n\t"));
+    let user_ans = await inquirer.prompt([{
+            type: "input",
+            name: "words",
+            message: "Please enter your sentence:"
+        }]);
+    console.log("\n\t", chalk.bgCyan.bold(user_ans.words) + "\n\t");
+    if (user_ans.words.trim() !== "") {
+        let answer = user_ans.words.trim().split(" ");
+        console.log(answer);
+        console.log(chalk.bgMagenta.bold(`\n\t Your sentence contains ${answer.length} words.\n\t`));
+    }
 }
 else {
-    console.log(chalk.red("Please select valid operator"));
+    console.log(chalk.bgRed.bold("\n\t OK, Goodbye!\n\t"));
 }

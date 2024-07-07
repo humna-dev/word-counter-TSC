@@ -1,16 +1,20 @@
 {
-  "name": "calculaor-g",
-  "version": "1.0.0",
-  "description": "",
+  "name": "humna-wordcounter-g",
+  "version": "1.0.6",
+  "description": "A simple number guessing game using Node.js",
   "main": "index.js",
-   "type":"module","scripts": {
+  "type": "module",
+   "bin": "index.js",
+  "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["number ", "inquirer"],
+  "author": "Your Name",
   "license": "ISC",
   "dependencies": {
-    "inquirer": "^9.2.22"
+    "inquirer": "^9.2.22",
+    "mathjs": "^12.4.2"
   },
   "devDependencies": {
     "@types/inquirer": "^9.0.7"
